@@ -28,8 +28,8 @@ const stats = [
 
 const Stats = () => {
   return (
-    <section className="py-24 bg-white px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className=" bg-white px-4">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Our Learning Impact</h2>
 

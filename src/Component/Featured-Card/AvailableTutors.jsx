@@ -1,13 +1,4 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  Chip,
-} from "@heroui/react";
-import Image from "next/image";
-import Link from "next/link";
+
 import AvailableCard from "./AvailableCard";
 
 const fetchTutors = async () => {
