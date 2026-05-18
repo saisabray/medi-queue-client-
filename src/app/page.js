@@ -1,3 +1,4 @@
+import WhyChooseUs from "@/Component/Choose";
 import AvailableTutors from "@/Component/Featured-Card/AvailableTutors";
 import Hero from "@/Component/Hero";
 
@@ -6,5 +7,7 @@ export default function Home() {
     <>
       <Hero />
       <AvailableTutors></AvailableTutors>
+      <WhyChooseUs/>
+
     </>);
 }
