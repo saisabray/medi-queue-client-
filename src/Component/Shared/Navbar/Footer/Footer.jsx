@@ -1,25 +1,28 @@
 "use client";
-
-import { Envelope, LogoFacebook, LogoGithub, LogoTelegram } from "@gravity-ui/icons";
+import {
+  Envelope,
+  LogoFacebook,
+  LogoGithub,
+  LogoTelegram,
+} from "@gravity-ui/icons";
 import { MapPin, Phone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-
 
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-white mt-20">
       <div className="container mx-auto px-6 py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* Logo & About */}
           <div>
-            <Image src='/assets/images/logo.png' alt="MediQueue Logo" width={250} height={250} />
-
-           
+            <Image
+              src="/assets/images/logo.png"
+              alt="MediQueue Logo"
+              width={250}
+              height={250}
+            />
           </div>
 
-          {/* Learning Services */}
           <div>
             <h3 className="text-xl font-semibold mb-5">Learning Services</h3>
 
@@ -56,7 +59,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="text-xl font-semibold mb-5">Contact Information</h3>
 
@@ -81,7 +83,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Social Links */}
           <div>
             <h3 className="text-xl font-semibold mb-5">Follow Us</h3>
 
@@ -91,7 +92,7 @@ export default function Footer() {
                 target="_blank"
                 className="w-11 h-11 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition duration-300"
               >
-                              <LogoFacebook              className="w-5 h-5" />
+                <LogoFacebook className="w-5 h-5" />
               </Link>
 
               <Link
