@@ -1,4 +1,4 @@
-import { Button, Card, Chip } from "@heroui/react";
+import { Button, Card} from "@heroui/react";
 import Image from "next/image";
 import {
   MapPin,
@@ -17,12 +17,13 @@ const TutorDetails = async ({ params }) => {
   const tutor = await res.json();
 
   return (
-    <div className="mx-auto max-w-6xl  px-5 py-10">
+    <div className="max-w-5xl mx-auto container px-5 py-6">
       <h2 className="text-3xl font-bold text-gray-900 my-8">Tutor Details</h2>
-      <div className="flex-1 flex flex-col  gap-6">
+      <div className=" flex-1 flex flex-col  gap-6">
         <Card className="p-8 border-none shadow-xl rounded-3xl bg-white flex flex-col sm:flex-row gap-8 items-center sm:items-start text-center sm:text-left">
           <div className="relative h-40 w-40 sm:h-48 sm:w-48 shrink-0 overflow-hidden rounded-full shadow-2xl border-4 border-white bg-white mx-auto sm:mx-0">
             <Image
+             
               className="object-cover"
               fill
               src={tutor?.tutorPhoto}
@@ -57,6 +58,7 @@ const TutorDetails = async ({ params }) => {
               </Button>
             </div>
           </div>
+        
         </Card>
 
         <Card className="p-8 sm:p-10 border-none shadow-xl rounded-3xl bg-white">
