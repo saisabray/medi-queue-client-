@@ -58,6 +58,7 @@ const AddTutorsPage = () => {
     const tutorData = {
       tutorName: data.name,
       tutorEmail: data.email,
+      bio: data.bio,
       tutorPhoto: data.image,
       subject: data.subject,
       availableDays: days,
@@ -95,22 +96,28 @@ const AddTutorsPage = () => {
       className="container mx-auto max-w-3xl bg-gray-200 p-8 rounded-lg mt-10"
     >
       <div className="flex justify-between items-center gap-5 w-full my-4">
-        <TextField isRequired name="name" type="text" className="w-full">
+        <TextField name="name" type="text" className="w-full">
           <Label>Name</Label>
           <Input placeholder="Enter your name" />
           <FieldError />
         </TextField>
 
-        <TextField isRequired name="image" type="url" className="w-full">
+        <TextField name="image" type="url" className="w-full">
           <Label>Image URL</Label>
           <Input placeholder="Image URL" />
           <FieldError />
         </TextField>
       </div>
 
-      <TextField isRequired name="email" type="email" className="w-full my-4">
+      <TextField name="email" type="email" className="w-full my-4">
         <Label>Email</Label>
         <Input placeholder="Enter your email" />
+        <FieldError />
+      </TextField>
+
+      <TextField name="bio" type="text" className="w-full my-4">
+        <Label>Bio</Label>
+        <Input placeholder="Write a short biography" />
         <FieldError />
       </TextField>
 
@@ -119,7 +126,6 @@ const AddTutorsPage = () => {
           name="subject"
           className="w-full"
           placeholder="Select one"
-          isRequired
         >
           <Label>Subject</Label>
 
@@ -152,7 +158,6 @@ const AddTutorsPage = () => {
 
       <div className="flex justify-between items-center gap-5 w-full my-4">
         <TextField
-          isRequired
           name="availableDays"
           type="text"
           className="w-full"
@@ -165,7 +170,7 @@ const AddTutorsPage = () => {
           />
           <FieldError />
         </TextField>
-        <DateField className="w-full" name="date" isRequired>
+        <DateField className="w-full" name="date">
           <Label>Session Date</Label>
           <DateField.Group>
             <DateField.Input>
@@ -176,13 +181,13 @@ const AddTutorsPage = () => {
       </div>
 
       <div className="flex justify-between items-center gap-5 w-full my-4">
-        <TextField isRequired name="hourlyFee" type="number" className="w-full">
+        <TextField name="hourlyFee" type="number" className="w-full">
           <Label>Hourly Fee</Label>
           <Input placeholder="500" />
           <FieldError />
         </TextField>
 
-        <TextField isRequired name="slot" type="number" className="w-full">
+        <TextField name="slot" type="number" className="w-full">
           <Label>Slot</Label>
           <Input placeholder="10" />
           <FieldError />
@@ -190,13 +195,13 @@ const AddTutorsPage = () => {
       </div>
 
       <div className="flex justify-between items-center gap-5 w-full my-4">
-        <TextField isRequired name="institute" type="text" className="w-full">
+        <TextField name="institute" type="text" className="w-full">
           <Label>Institute</Label>
           <Input placeholder="Dhaka University" />
           <FieldError />
         </TextField>
 
-        <TextField isRequired name="experience" type="text" className="w-full">
+        <TextField name="experience" type="text" className="w-full">
           <Label>Experience</Label>
           <Input placeholder="5 years" />
           <FieldError />
@@ -204,7 +209,7 @@ const AddTutorsPage = () => {
       </div>
 
       <div className="my-4 w-full flex justify-between items-center gap-5">
-        <TextField isRequired name="location" type="text" className="w-full">
+        <TextField name="location" type="text" className="w-full">
           <Label>Location(Area/City)</Label>
           <Input placeholder="Dhaka" />
           <FieldError />
@@ -214,7 +219,6 @@ const AddTutorsPage = () => {
           name="teachingMode"
           className="w-full"
           placeholder="Select one"
-          isRequired
         >
           <Label>Teaching Mode</Label>
 

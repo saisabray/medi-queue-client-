@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Tutors", href: "/tutors" },
+  { name: "Tutors", href: "/all-tutors" },
   { name: "Add Tutor", href: "/add-tutor" },
   { name: "My Tutors", href: "/my-tutors" },
   { name: "My Booked Sessions", href: "/my-sessions" },
@@ -81,15 +81,15 @@ export default function Navbar() {
         {/* RIGHT */}
         <div className="hidden items-center gap-4 md:flex">
           <Button variant="outline"
-            className="border-blue-600 text-blue-600 font-semibold px-6"
-            radius="lg"
+            className="border-blue-600 text-blue-600 font-semibold px-6 rounded-2xl"
+           
           >
             LogIn
           </Button>
 
           <Button
-            className="bg-linear-to-r from-blue-600 to-cyan-500 text-white font-semibold px-6"
-            radius="lg"
+            className="bg-linear-to-r from-blue-600 to-cyan-500 text-white font-semibold px-6 rounded-2xl"
+           
           >
             Sign Up
           </Button>
