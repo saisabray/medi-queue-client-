@@ -10,7 +10,7 @@ const AvailableCard = ({ tutor }) => {
         variant="secondary"
         className="absolute top-6 right-5 z-1 py-1 px-3 font-bold"
       >
-        <Chip.Label>Hourly Fee : ${tutor.hourlyFee.toFixed(2)}</Chip.Label>
+        <Chip.Label>Hourly Fee : ${tutor.hourlyFee}</Chip.Label>
       </Chip>
 
       <Link href={`/tutor/${tutor._id}`}>
