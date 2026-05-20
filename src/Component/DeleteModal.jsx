@@ -4,14 +4,20 @@ import { AlertDialog, Button } from "@heroui/react";
 import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
 
 const DeleteModal = ({ tutor }) => {
   const router = useRouter();
+  const { data: tokenData } = await authClient.token();
 
   const handleDelete = async () => {
+    const { data: tokenData } = await authClient.token();
     try {
       const res = await fetch(`http://localhost:8000/tutors/all/${tutor._id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${tokenData?.token}`,
+        },
       });
 
       if (!res.ok) {

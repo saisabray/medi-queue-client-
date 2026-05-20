@@ -75,6 +75,7 @@ export default function BookingModal({ tutor }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        
       },
       body: JSON.stringify(bookingData),
     });

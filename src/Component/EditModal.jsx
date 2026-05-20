@@ -7,6 +7,7 @@ import { useState } from "react";
 import From from "./From";
 import { parseAvailability } from "@/lib/utilis/parseAvailability";
 import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 export default function EditModal({ tutor }) {
   const [availability, setAvailability] = useState(`${tutor?.availableDays || ""} ${tutor?.availableTime || ""}`);
@@ -36,12 +37,13 @@ export default function EditModal({ tutor }) {
       teachingMode: data.teachingMode,
       sessionDate: data.date,
     };
-
+const { data: tokenData } = await authClient.token();
     try {
       const res = await fetch(`http://localhost:8000/tutors/all/${tutor._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
         },
         body: JSON.stringify(updatedData),
       });

@@ -1,10 +1,17 @@
 import MyTutorsTable from "@/Component/MyTutorsTable";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { authClient } from "@/lib/auth-client"; 
+
 
 const fetchTutors = async (userId) => {
+        const { data: tokenData } = await authClient.token();
+
   const res = await fetch(`http://localhost:8000/tutors/${userId}`, {
     cache: "no-store",
+    headers: {
+      authorization: `Bearer ${tokenData?.token}`,
+    },
   });
 
   if (!res.ok) {

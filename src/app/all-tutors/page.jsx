@@ -1,9 +1,14 @@
 import AvailableCard from "@/Component/Featured-Card/AvailableCard";
+import { authClient } from "@/lib/auth-client";
 
 const fetchTutors = async () => {
+      const { data: tokenData } = await authClient.token();
 
     const res = await fetch("http://localhost:8000/tutors/all", {
       cache: "no-store",
+      headers: {
+        authorization: `Bearer ${tokenData?.token}`,
+      },
     });
     return res.json();
   

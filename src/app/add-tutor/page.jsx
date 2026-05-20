@@ -3,7 +3,7 @@
 import From from "@/Component/From";
 import { parseAvailability } from "@/lib/utilis/parseAvailability";
 import { useState } from "react";
-import { authClient } from "@/lib/auth-client"; // ✅ THIS WAS MISSING
+import { authClient } from "@/lib/auth-client"; 
 
 const AddTutorsPage = () => {
   const [availability, setAvailability] = useState("");
@@ -46,13 +46,15 @@ const AddTutorsPage = () => {
       userId: user.id, 
       userEmail: user.email, 
     };
+    const { data: tokenData } = await authClient.token();
+    console.log("TOKEN DATA:", tokenData);
 
-    console.log("TUTOR DATA:", tutorData);
 
     const res = await fetch("http://localhost:8000/tutors/all", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(tutorData),
     });

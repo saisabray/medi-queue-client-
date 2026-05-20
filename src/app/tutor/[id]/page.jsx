@@ -1,5 +1,6 @@
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
 import {
   MapPin,
   GraduationCap,
@@ -11,9 +12,14 @@ import {
 import Booking from "@/Component/BookingModal";
 
 const TutorDetails = async ({ params }) => {
+  const { data: tokenData } = await authClient.token();
+
   const { id } = await params;
   const res = await fetch(`http://localhost:8000/tutors/all/${id}`, {
     cache: "no-store",
+    headers: {
+      authorization: `Bearer ${tokenData?.token}`,
+    },
   });
   const tutor = await res.json();
 
@@ -61,7 +67,6 @@ const TutorDetails = async ({ params }) => {
             </div>
           </div>
         </Card>
-
 
         <Card className="p-8 sm:p-10 border-none shadow-xl rounded-3xl bg-white">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-4">
