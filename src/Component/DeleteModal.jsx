@@ -5,7 +5,7 @@ import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-const deleteModal = ({ tutor }) => {
+const DeleteModal = ({ tutor }) => {
   const router = useRouter();
 
   const handleDelete = async () => {
@@ -64,4 +64,4 @@ const deleteModal = ({ tutor }) => {
     </AlertDialog>
   );
 }
-export default deleteModal;
+export default DeleteModal;

@@ -1,4 +1,4 @@
-import { Button, Card} from "@heroui/react";
+import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import {
   MapPin,
@@ -8,6 +8,7 @@ import {
   BookOpen,
   MonitorPlay,
 } from "lucide-react";
+import Booking from "@/Component/BookingModal";
 
 const TutorDetails = async ({ params }) => {
   const { id } = await params;
@@ -23,7 +24,6 @@ const TutorDetails = async ({ params }) => {
         <Card className="p-8 border-none shadow-xl rounded-3xl bg-white flex flex-col sm:flex-row gap-8 items-center sm:items-start text-center sm:text-left">
           <div className="relative h-40 w-40 sm:h-48 sm:w-48 shrink-0 overflow-hidden rounded-full shadow-2xl border-4 border-white bg-white mx-auto sm:mx-0">
             <Image
-             
               className="object-cover"
               fill
               src={tutor?.tutorPhoto}
@@ -49,17 +49,19 @@ const TutorDetails = async ({ params }) => {
                 <span className="text-base sm:text-lg font-semibold px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full">
                   {tutor?.experience}
                 </span>
+
+                <span className="text-base sm:text-lg font-semibold px-3 py-1 bg-amber-100 text-amber-700 rounded-full">
+                  Slots: {tutor?.totalSlot}
+                </span>
               </div>
             </div>
 
             <div className="mt-6 flex justify-center sm:justify-start">
-              <Button className="bg-linear-to-r from-blue-600 to-cyan-500 text-white font-semibold px-6 rounded-2xl">
-                Book Session
-              </Button>
+              <Booking tutor={tutor} />
             </div>
           </div>
-        
         </Card>
+
 
         <Card className="p-8 sm:p-10 border-none shadow-xl rounded-3xl bg-white">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-4">
