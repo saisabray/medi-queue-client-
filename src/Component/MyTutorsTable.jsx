@@ -1,6 +1,7 @@
 import { Table } from "@heroui/react";
 import Image from "next/image";
-import { Edit, Trash2 } from "lucide-react";
+import {  Trash2 } from "lucide-react";
+import EditModal from "./EditModal";
 
 export default function MyTutorsTable({ tutors }) {
   console.log("tutors:", tutors);
@@ -48,9 +49,7 @@ export default function MyTutorsTable({ tutors }) {
                     <Table.Cell>{tutor.teachingMode}</Table.Cell>
                     <Table.Cell>
                       <div className="flex items-center gap-3">
-                        <button className="p-2 rounded-lg hover:bg-blue-50 text-blue-600">
-                          <Edit size={18} />
-                        </button>
+                        <EditModal tutor={tutor} />
                         <button className="p-2 rounded-lg hover:bg-red-50 text-red-600">
                           <Trash2 size={18} />
                         </button>

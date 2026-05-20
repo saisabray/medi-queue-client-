@@ -8,47 +8,51 @@ import {
   ListBox,
   Form,
   Button,
-  DateField,
 } from "@heroui/react";
 import { Check } from "lucide-react";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
 
-const From = ({ availability, setAvailability, handleSubmit }) => {
+const From = ({ availability, setAvailability, handleSubmit, className, tutor }) => {
+  const [sessionDate, setSessionDate] = useState(tutor?.sessionDate ? new Date(tutor.sessionDate) : null);
+
   return (
     <Form
       onSubmit={handleSubmit}
-      className="container mx-auto max-w-3xl bg-gray-200 p-8 rounded-lg mt-10"
+      className={className || "container mx-auto max-w-3xl bg-gray-200 p-8 rounded-lg mt-10"}
     >
       <div className="flex justify-between items-center gap-5 w-full my-4">
-        <TextField name="name" type="text" className="w-full">
+        <TextField name="name" type="text" className="w-full" defaultValue={tutor?.tutorName}>
           <Label>Name</Label>
           <Input placeholder="Enter your name" />
           <FieldError />
         </TextField>
 
-        <TextField name="image" type="url" className="w-full">
+        <TextField name="image" type="url" className="w-full" defaultValue={tutor?.tutorPhoto}>
           <Label>Image URL</Label>
           <Input placeholder="Image URL" />
           <FieldError />
         </TextField>
       </div>
 
-      <TextField name="email" type="email" className="w-full my-4">
+      <TextField name="email" type="email" className="w-full my-4" defaultValue={tutor?.tutorEmail}>
         <Label>Email</Label>
         <Input placeholder="Enter your email" />
         <FieldError />
       </TextField>
 
-      <TextField name="bio" type="text" className="w-full my-4">
+      <TextField name="bio" type="text" className="w-full my-4" defaultValue={tutor?.bio}>
         <Label>Bio</Label>
         <Input placeholder="Write a short biography" />
         <FieldError />
       </TextField>
 
       <div className="my-4 w-full">
-        <Select name="subject" className="w-full" placeholder="Select one">
+        <Select name="subject" className="w-full" placeholder="Select one" defaultSelectedKey={tutor?.subject}>
           <Label>Subject</Label>
 
           <Select.Trigger>
@@ -88,24 +92,27 @@ const From = ({ availability, setAvailability, handleSubmit }) => {
           />
           <FieldError />
         </TextField>
-        <DateField className="w-full" name="date">
+        <div className="w-full flex flex-col gap-2">
           <Label>Session Date</Label>
-          <DateField.Group>
-            <DateField.Input>
-              {(segment) => <DateField.Segment segment={segment} />}
-            </DateField.Input>
-          </DateField.Group>
-        </DateField>
+          <DatePicker
+            selected={sessionDate}
+            onChange={(date) => setSessionDate(date)}
+            className="w-full p-2.5 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            name="date"
+            placeholderText="Select session date"
+            dateFormat="yyyy-MM-dd"
+          />
+        </div>
       </div>
 
       <div className="flex justify-between items-center gap-5 w-full my-4">
-        <TextField name="hourlyFee" type="number" className="w-full">
+        <TextField name="hourlyFee" type="number" className="w-full" defaultValue={tutor?.hourlyFee}>
           <Label>Hourly Fee</Label>
           <Input placeholder="500" />
           <FieldError />
         </TextField>
 
-        <TextField name="slot" type="number" className="w-full">
+        <TextField name="slot" type="number" className="w-full" defaultValue={tutor?.totalSlot}>
           <Label>Slot</Label>
           <Input placeholder="10" />
           <FieldError />
@@ -113,13 +120,13 @@ const From = ({ availability, setAvailability, handleSubmit }) => {
       </div>
 
       <div className="flex justify-between items-center gap-5 w-full my-4">
-        <TextField name="institute" type="text" className="w-full">
+        <TextField name="institute" type="text" className="w-full" defaultValue={tutor?.institution}>
           <Label>Institute</Label>
           <Input placeholder="Dhaka University" />
           <FieldError />
         </TextField>
 
-        <TextField name="experience" type="text" className="w-full">
+        <TextField name="experience" type="text" className="w-full" defaultValue={tutor?.experience}>
           <Label>Experience</Label>
           <Input placeholder="5 years" />
           <FieldError />
@@ -127,13 +134,13 @@ const From = ({ availability, setAvailability, handleSubmit }) => {
       </div>
 
       <div className="my-4 w-full flex justify-between items-center gap-5">
-        <TextField name="location" type="text" className="w-full">
+        <TextField name="location" type="text" className="w-full" defaultValue={tutor?.location}>
           <Label>Location(Area/City)</Label>
           <Input placeholder="Dhaka" />
           <FieldError />
         </TextField>
 
-        <Select name="teachingMode" className="w-full" placeholder="Select one">
+        <Select name="teachingMode" className="w-full" placeholder="Select one"  defaultSelectedKey={tutor?.teachingMode}>
           <Label>Teaching Mode</Label>
 
           <Select.Trigger>
