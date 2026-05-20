@@ -15,8 +15,6 @@ const navLinks = [
 
 export default function Navbar({ user}) {
 
-  
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname();

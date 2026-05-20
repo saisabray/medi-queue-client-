@@ -24,7 +24,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
     const session = await auth.api.getSession({
     headers: await headers(),
-  });
+    });
 
   return (
     <html
