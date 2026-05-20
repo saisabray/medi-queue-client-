@@ -4,6 +4,7 @@ import Navbar from "@/Component/Shared/Navbar/Navbar";
 import Footer from "@/Component/Shared/Footer/Footer";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { Providers } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,19 +23,24 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-    const session = await auth.api.getSession({
+  const session = await auth.api.getSession({
     headers: await headers(),
-    });
+  });
 
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar user={session?.user} />
-        {children}
-        <Footer/>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <Providers>
+          <Navbar user={session?.user} />
+
+          {children}
+
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

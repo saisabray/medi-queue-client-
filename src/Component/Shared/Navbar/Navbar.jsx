@@ -4,6 +4,7 @@ import { Link, Button, Avatar } from "@heroui/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import SignOutButton from "./SignOut";
+import { ThemeToggle } from "@/Component/ThemeToggle";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -13,7 +14,8 @@ const navLinks = [
   { name: "My Booked Sessions", href: "/my-booked-sessions" },
 ];
 
-export default function Navbar({ user}) {
+export default function Navbar({ user }) {
+  
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -79,40 +81,42 @@ export default function Navbar({ user}) {
             </li>
           ))}
         </ul>
+        <div className="hidden items-center gap-4 md:flex">
+          {!user && (
+            <div className="hidden items-center gap-4 md:flex border-b-0">
+              <Link href="/login" className="no-underline">
+                <Button
+                  variant="outline"
+                  className="w-full border-blue-600 text-blue-600"
+                >
+                  Login
+                </Button>
+              </Link>
 
-        {!user && (
-          <div className="hidden items-center gap-4 md:flex border-b-0">
-            <Link href="/login" className="no-underline">
-              <Button
-                variant="outline"
-                className="w-full border-blue-600 text-blue-600"
-              >
-                Login
-              </Button>
-            </Link>
-
-            <Link href="/signup" className="no-underline">
-              <Button className="w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white">
-                Sign Up
-              </Button>
-            </Link>
-          </div>
-        )}
-        {user && (
-          <div className="flex justify-between items-center gap-3">
-            <div>
-              <Avatar size="sm">
-                <Avatar.Image
-                  alt={user?.name}
-                  src={user?.image}
-                  referrerPolicy="no-referrer"
-                />
-                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
-              </Avatar>
+              <Link href="/signup" className="no-underline">
+                <Button className="w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white">
+                  Sign Up
+                </Button>
+              </Link>
             </div>
-            <SignOutButton />
-          </div>
-        )}
+          )}
+          {user && (
+            <div className="flex justify-between items-center gap-3">
+              <div>
+                <Avatar size="sm">
+                  <Avatar.Image
+                    alt={user?.name}
+                    src={user?.image}
+                    referrerPolicy="no-referrer"
+                  />
+                  <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                </Avatar>
+              </div>
+              <SignOutButton />
+            </div>
+          )}
+          <ThemeToggle />
+        </div>
       </header>
 
       {isMenuOpen && (
@@ -132,6 +136,7 @@ export default function Navbar({ user}) {
             ))}
 
             <div className="mt-4 flex justify-center items-center gap-3 w-4/5 ">
+              <ThemeToggle/>
               {!user && (
                 <div className="hidden items-center gap-4 md:flex border-b-0">
                   <Link href="/login" className="no-underline">
