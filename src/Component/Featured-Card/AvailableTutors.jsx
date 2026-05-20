@@ -8,7 +8,6 @@ const fetchTutors = async () => {
 
 const AvailableTutors = async () => {
   const tutors = await fetchTutors();
-  console.log(tutors);
 
   return (
     <div className="container mx-auto px-4 py-8 mt-10 md:mt-15">

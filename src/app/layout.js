@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/Component/Shared/Navbar/Navbar";
 import Footer from "@/Component/Shared/Footer/Footer";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,14 +21,18 @@ export const metadata = {
     "MediQueue is a tutor booking web application that lets students register, log in, browse tutors, book sessions by subject and availability, and manage schedules using digital session tokens.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+    const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
+        <Navbar user={session?.user} />
         {children}
         <Footer/>
       </body>

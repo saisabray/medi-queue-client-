@@ -25,9 +25,9 @@ const SignUpPage = () => {
     const password = e.target.password.value;
     console.log({ name, email, password, image });
     const { data, error } = await authClient.signUp.email({
-      name,
       email,
       password,
+      name,
       image,
     });
     console.log({ data, error });
@@ -37,7 +37,12 @@ const SignUpPage = () => {
     toast.success("Sign up successful! Please log in.");
     router.push("/login");
   };
-
+  const onGoogleSignUp = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+    toast.success("Redirecting to Google sign up...");
+  };
   return (
     <Card className="shadow-md mx-auto w-screen sm:w-125 py-5 mt-10">
       <h1 className="text-center text-2xl font-bold">Sign Up</h1>
@@ -111,7 +116,7 @@ const SignUpPage = () => {
         </div>
       </Form>
       <p className="text-center text-lg text-gray-400 font-semibold">Or</p>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onGoogleSignUp}>
         Sign Up with Google
       </button>
       <div className="text-center mt-4 text-sm text-gray-600 pb-4">
