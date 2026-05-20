@@ -1,7 +1,8 @@
-import { Table } from "@heroui/react";
+import { Button, Table } from "@heroui/react";
 import Image from "next/image";
-import {  Trash2 } from "lucide-react";
+import Link from "next/link";
 import EditModal from "./EditModal";
+import DeleteModal from "./DeleteModal";
 
 export default function MyTutorsTable({ tutors }) {
   console.log("tutors:", tutors);
@@ -50,24 +51,19 @@ export default function MyTutorsTable({ tutors }) {
                     <Table.Cell>
                       <div className="flex items-center gap-3">
                         <EditModal tutor={tutor} />
-                        <button className="p-2 rounded-lg hover:bg-red-50 text-red-600">
-                          <Trash2 size={18} />
-                        </button>
+                        <DeleteModal tutor={tutor} />
                       </div>
                     </Table.Cell>
                   </Table.Row>
                 ))
               ) : (
                 <Table.Row>
-                  <Table.Cell>
-                    No tutors found. Add your first tutor.
+                  <Table.Cell colSpan={7} className="text-center py-8 text-gray-500 text-xl font-medium">
+                    No tutors found.
+                    <Link href="/add-tutor" className="text-blue-600 text-sm hover:underline font-semibold ml-1">
+                      Add tutor
+                    </Link>
                   </Table.Cell>
-                  <Table.Cell></Table.Cell>
-                  <Table.Cell></Table.Cell>
-                  <Table.Cell></Table.Cell>
-                  <Table.Cell></Table.Cell>
-                  <Table.Cell></Table.Cell>
-                  <Table.Cell></Table.Cell>
                 </Table.Row>
               )}
             </Table.Body>
