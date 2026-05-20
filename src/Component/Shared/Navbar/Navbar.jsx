@@ -78,21 +78,21 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* RIGHT */}
-        <div className="hidden items-center gap-4 md:flex">
-          <Button variant="outline"
-            className="border-blue-600 text-blue-600 font-semibold px-6 rounded-2xl"
-           
-          >
-            LogIn
-          </Button>
+        <div className="hidden items-center gap-4 md:flex border-b-0">
+          <Link href="/login" className="no-underline">
+            <Button
+              variant="outline"
+              className="w-full border-blue-600 text-blue-600"
+            >
+              Login
+            </Button>
+          </Link>
 
-          <Button
-            className="bg-linear-to-r from-blue-600 to-cyan-500 text-white font-semibold px-6 rounded-2xl"
-           
-          >
-            Sign Up
-          </Button>
+          <Link href="/signup" className="no-underline">
+            <Button className="w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white">
+              Sign Up
+            </Button>
+          </Link>
         </div>
       </header>
 
@@ -113,13 +113,20 @@ export default function Navbar() {
             ))}
 
             <div className="mt-4 flex justify-center items-center gap-3 w-4/5 ">
-              <Button variant="outline" className=" w-full border-blue-600 text-blue-600">
-                Login
-              </Button>
+              <Link href="/login" className="no-underline">
+                <Button
+                  variant="outline"
+                  className="w-full border-blue-600 text-blue-600"
+                >
+                  Login
+                </Button>
+              </Link>
 
-              <Button variant="default" className=" w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white">
-                Sign Up
-              </Button>
+              <Link href="/signup" className="no-underline">
+                <Button className="w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white">
+                  Sign Up
+                </Button>
+              </Link>
             </div>
           </ul>
         </div>
