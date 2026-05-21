@@ -8,6 +8,7 @@ import From from "./From";
 import { parseAvailability } from "@/lib/utilis/parseAvailability";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 export default function EditModal({ tutor }) {
   const [availability, setAvailability] = useState(`${tutor?.availableDays || ""} ${tutor?.availableTime || ""}`);
@@ -64,12 +65,12 @@ export default function EditModal({ tutor }) {
 
   return (
     <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
-      <Button isIconOnly className="bg-transparent text-blue-600 hover:bg-blue-50" onPress={() => setIsOpen(true)}>
+      <Button isIconOnly className={`bg-transparent text-blue-600 hover:bg-blue-50 ${getAnimationClass("hoverPulse")}`} onPress={() => setIsOpen(true)}>
         <Edit size={18} />
       </Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
-          <Modal.Dialog className="max-w-3xl">
+          <Modal.Dialog className={`max-w-3xl ${getAnimationClass("modal")}`}>
             <Modal.CloseTrigger />
             <Modal.Header>
               <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">

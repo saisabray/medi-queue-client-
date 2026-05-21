@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@heroui/react";
 import { CalendarDays, ShieldCheck, BookOpen, Clock3 } from "lucide-react";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const features = [
   {
@@ -34,9 +35,9 @@ const WhyChooseUs = () => {
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-bold mb-4">Why Choose MediQueue</h2>
+          <h2 className={`text-4xl font-bold mb-4 ${getAnimationClass("entry")}`}>Why Choose MediQueue</h2>
 
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+          <p className={`text-lg text-gray-500 max-w-2xl mx-auto ${getAnimationClass("pageLoad", { delay: "animate__delay-1s" })}`}>
             A smarter tutor booking platform designed to simplify learning and
             session management for students.
           </p>
@@ -49,7 +50,8 @@ const WhyChooseUs = () => {
             return (
               <Card
                 key={index}
-                className="group border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+                style={{ animationDelay: `${index * 150}ms` }}
+                className={`group border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ${getAnimationClass("entry")} ${getAnimationClass("hoverPulse")}`}
               >
                 <CardContent className="p-8">
                   <div className="relative w-14 h-14 mb-6 flex items-center justify-center">
@@ -78,3 +80,4 @@ const WhyChooseUs = () => {
 };
 
 export default WhyChooseUs;
+

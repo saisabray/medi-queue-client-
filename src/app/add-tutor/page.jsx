@@ -5,6 +5,7 @@ import { parseAvailability } from "@/lib/utilis/parseAvailability";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const AddTutorsPage = () => {
   const [availability, setAvailability] = useState("");
@@ -16,7 +17,6 @@ const AddTutorsPage = () => {
 
     const { data: sessionData } = await authClient.getSession();
     const user = sessionData?.user;
-
 
     if (!user) {
       alert("Please login first");
@@ -70,12 +70,15 @@ const AddTutorsPage = () => {
   };
 
   return (
-    <From
-      availability={availability}
-      setAvailability={setAvailability}
-      handleSubmit={handleSubmit}
-    />
+    <div className={getAnimationClass("pageLoad")}>
+      <From
+        availability={availability}
+        setAvailability={setAvailability}
+        handleSubmit={handleSubmit}
+      />
+    </div>
   );
 };
 
 export default AddTutorsPage;
+

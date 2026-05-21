@@ -14,15 +14,17 @@ import {
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const SignUpPage = () => {
   const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const image = e.target.image.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const image = formData.get("image");
+    const email = formData.get("email");
+    const password = formData.get("password");
     console.log({ name, email, password, image });
     const { data, error } = await authClient.signUp.email({
       email,
@@ -33,6 +35,7 @@ const SignUpPage = () => {
     console.log({ data, error });
     if (error) {
       toast.error("Failed to sign up: " + error.message);
+      return;
     }
     toast.success("Sign up successful! Please log in.");
     router.push("/login");
@@ -44,7 +47,7 @@ const SignUpPage = () => {
     toast.success("Redirecting to Google sign up...");
   };
   return (
-    <Card className="shadow-md mx-auto w-screen sm:w-125 py-5 mt-10">
+    <Card className={`shadow-md mx-auto w-screen sm:w-125 py-5 mt-10 ${getAnimationClass("zoom")}`}>
       <h1 className="text-center text-2xl font-bold">Sign Up</h1>
 
       <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
@@ -105,18 +108,18 @@ const SignUpPage = () => {
           <FieldError />
         </TextField>
 
-        <div className="flex gap-2">
-          <Button type="submit" variant="primary">
+         <div className="flex gap-2">
+          <Button type="submit" variant="primary" className={getAnimationClass("hoverPulse")}>
             <Check />
             Create Account
           </Button>
-          <Button type="reset" variant="outline" className="text-primary">
+          <Button type="reset" variant="outline" className={`text-primary ${getAnimationClass("hoverPulse")}`}>
             Reset
           </Button>
         </div>
       </Form>
       <p className="text-center text-lg text-gray-400 font-semibold">Or</p>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onGoogleSignUp}>
+      <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-transform ${getAnimationClass("hoverPulse")}`} onClick={onGoogleSignUp}>
         Sign Up with Google
       </button>
       <div className="text-center mt-4 text-sm text-gray-600 pb-4">

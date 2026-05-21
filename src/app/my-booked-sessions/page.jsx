@@ -2,6 +2,7 @@ import MyBookingTable from "@/Component/MyBookingTable";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 export default async function BookingsPage() {
   const session = await auth.api.getSession({
@@ -25,5 +26,10 @@ export default async function BookingsPage() {
 
   const data = await res.json();
 
-  return <MyBookingTable bookings={data?.data || []} />;
+  return (
+    <div className={getAnimationClass("pageLoad")}>
+      <MyBookingTable bookings={data?.data || []} />
+    </div>
+  );
 }
+

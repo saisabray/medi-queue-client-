@@ -11,6 +11,7 @@ import {
 import Booking from "@/Component/BookingModal";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const TutorDetails = async ({ params }) => {
   const { token } = await auth.api.getToken({
@@ -27,7 +28,7 @@ const TutorDetails = async ({ params }) => {
   const tutor = await res.json();
 
   return (
-    <div className="max-w-5xl mx-auto container px-5 py-6">
+    <div className={`max-w-5xl mx-auto container px-5 py-6 ${getAnimationClass("pageLoad")}`}>
       <h2 className="text-3xl font-bold text-gray-900 my-8">Tutor Details</h2>
       <div className=" flex-1 flex flex-col  gap-6">
         <Card className="p-8 border-none shadow-xl rounded-3xl bg-white flex flex-col sm:flex-row gap-8 items-center sm:items-start text-center sm:text-left">

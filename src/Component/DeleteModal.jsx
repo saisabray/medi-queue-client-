@@ -5,6 +5,7 @@ import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { authClient } from "@/lib/auth-client";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const DeleteModal = ({ tutor }) => {
   const router = useRouter();
@@ -38,10 +39,10 @@ const DeleteModal = ({ tutor }) => {
 
   return (
     <AlertDialog>
-      <Button variant="danger"><Trash></Trash></Button>
+      <Button variant="danger" className={getAnimationClass("hoverPulse")}><Trash></Trash></Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
-          <AlertDialog.Dialog className="sm:max-w-[400px]">
+          <AlertDialog.Dialog className={`sm:max-w-[400px] ${getAnimationClass("modal")}`}>
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
@@ -55,10 +56,10 @@ const DeleteModal = ({ tutor }) => {
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>
-              <Button slot="close" variant="tertiary">
+              <Button slot="close" variant="tertiary" className={getAnimationClass("hoverPulse")}>
                 Cancel
               </Button>
-              <Button slot="close" variant="danger" onPress={handleDelete}>
+              <Button slot="close" variant="danger" onPress={handleDelete} className={getAnimationClass("hoverPulse")}>
                 Delete
               </Button>
             </AlertDialog.Footer>

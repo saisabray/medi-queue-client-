@@ -2,6 +2,7 @@ import AvailableCard from "@/Component/Featured-Card/AvailableCard";
 import SearchFilter from "@/Component/Search&Filter";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const fetchTutors = async (searchParams) => {
   const { token } = await auth.api.getToken({
@@ -37,7 +38,7 @@ const Tutors = async ({ searchParams }) => {
   const tutors = await fetchTutors(resolvedParams);
 
   return (
-    <div className="container mx-auto px-4 py-8 ">
+    <div className={`container mx-auto px-4 py-8 ${getAnimationClass("pageLoad")}`}>
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Our Tutors</h1>
       <SearchFilter />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">

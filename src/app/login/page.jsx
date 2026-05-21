@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -46,7 +47,7 @@ const LoginPage = () => {
     toast.success("Redirecting to Google sign in...");
   };
   return (
-    <Card className="shadow-md mx-auto w-screen sm:w-125 py-5 mt-10">
+    <Card className={`shadow-md mx-auto w-screen sm:w-125 py-5 mt-10 ${getAnimationClass("zoom")}`}>
       <h1 className="text-center text-2xl font-bold">Log In</h1>
 
       <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
@@ -96,17 +97,17 @@ const LoginPage = () => {
         </TextField>
 
         <div className="flex gap-2">
-          <Button type="submit" variant="primary">
+          <Button type="submit" variant="primary" className={getAnimationClass("hoverPulse")}>
             <Check />
             Sign In
           </Button>
-          <Button type="reset" variant="outline" className="text-primary">
+          <Button type="reset" variant="outline" className={`text-primary ${getAnimationClass("hoverPulse")}`}>
             Reset
           </Button>
         </div>
       </Form>
       <p className="text-center text-lg text-gray-400 font-semibold">Or</p>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onGoogleSignIn}>
+      <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-transform ${getAnimationClass("hoverPulse")}`} onClick={onGoogleSignIn}>
         Sign In with Google
       </button>
       <div className="text-center mt-4 text-sm text-gray-600 pb-4">

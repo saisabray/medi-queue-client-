@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import SignOutButton from "./SignOut";
 import { ThemeToggle } from "@/Component/ThemeToggle";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -86,14 +87,14 @@ export default function Navbar({ user }) {
               <Link href="/login" className="no-underline">
                 <Button
                   variant="outline"
-                  className="w-full border-blue-600 text-blue-600"
+                  className={`w-full border-blue-600 text-blue-600 ${getAnimationClass("hoverPulse")}`}
                 >
                   Login
                 </Button>
               </Link>
 
               <Link href="/signup" className="no-underline">
-                <Button className="w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white">
+                <Button className={`w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white ${getAnimationClass("hoverPulse")}`}>
                   Sign Up
                 </Button>
               </Link>
@@ -102,7 +103,7 @@ export default function Navbar({ user }) {
           {user && (
             <div className="flex justify-between items-center gap-3">
               <div>
-                <Avatar size="sm">
+                <Avatar size="sm" className={getAnimationClass("hoverPulse")}>
                   <Avatar.Image
                     alt={user?.name}
                     src={user?.image}
@@ -119,7 +120,7 @@ export default function Navbar({ user }) {
       </header>
 
       {isMenuOpen && (
-        <div className="border-t border-gray-200 bg-white md:hidden">
+        <div className={`border-t border-gray-200 bg-white md:hidden ${getAnimationClass("dropdown")}`}>
           <ul className="flex flex-col items-center gap-4 py-6">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -140,14 +141,14 @@ export default function Navbar({ user }) {
                   <Link href="/login" className="no-underline">
                     <Button
                       variant="outline"
-                      className="w-full border-blue-600 text-blue-600"
+                      className={`w-full border-blue-600 text-blue-600 ${getAnimationClass("hoverPulse")}`}
                     >
                       Login
                     </Button>
                   </Link>
 
                   <Link href="/signup" className="no-underline">
-                    <Button className="w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white">
+                    <Button className={`w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white ${getAnimationClass("hoverPulse")}`}>
                       Sign Up
                     </Button>
                   </Link>
@@ -156,7 +157,7 @@ export default function Navbar({ user }) {
               {user && (
                 <div className="flex justify-between items-center gap-3">
                   <div>
-                    <Avatar size="sm">
+                    <Avatar size="sm" className={getAnimationClass("hoverPulse")}>
                       <Avatar.Image
                         alt={user?.name}
                         src={user?.image}

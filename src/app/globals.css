@@ -1,7 +1,28 @@
 @import "tailwindcss";
 @import "@heroui/styles";
+@import "animate.css";
 
 :root {
   --accent: oklch(0.7 0.25 260);
   --success: oklch(0.65 0.15 155);
+}
+
+.animate-hover-pulse {
+  transition: transform 0.2s ease-in-out;
+}
+
+.animate-hover-pulse:hover {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate__animated,
+  .animate-hover-pulse {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
 }

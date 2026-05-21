@@ -1,10 +1,11 @@
 import { Button, Chip } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 const AvailableCard = ({ tutor }) => {
   return (
-    <div className="card bg-slate-50 rounded-xl shadow-xl hover:shadow-2xl transition-all overflow-hidden relative h-full flex flex-col">
+    <div className={`card bg-slate-50 rounded-xl shadow-xl hover:shadow-2xl transition-all overflow-hidden relative h-full flex flex-col ${getAnimationClass("entry")}`}>
       <Chip
         color="accent"
         variant="secondary"
@@ -51,7 +52,7 @@ const AvailableCard = ({ tutor }) => {
 
         <div className="mt-auto">
           <Link href={`/tutor/${tutor._id}`}>
-            <Button className="w-full rounded-2xl bg-primary text-white">
+            <Button className={`w-full rounded-2xl bg-primary text-white ${getAnimationClass("hoverPulse")}`}>
               Book a Session
             </Button>
           </Link>
@@ -62,3 +63,4 @@ const AvailableCard = ({ tutor }) => {
 };
 
 export default AvailableCard;
+

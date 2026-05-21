@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Lock, Sparkles } from "lucide-react";
+import { getAnimationClass } from "@/lib/utilis/animation";
 
 export default function BookingModal({ tutor }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,8 +100,8 @@ export default function BookingModal({ tutor }) {
     <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
       <Button
         className={`font-semibold px-6 rounded-2xl transition-all duration-200 ${isButtonDisabled
-            ? "bg-gray-200 text-gray-400 cursor-not-allowed shadow-none"
-            : "bg-linear-to-r from-blue-600 to-cyan-500 text-white hover:opacity-90 active:scale-95"
+          ? "bg-gray-200 text-gray-400 cursor-not-allowed shadow-none"
+          : `bg-linear-to-r from-blue-600 to-cyan-500 text-white hover:opacity-90 active:scale-95 ${getAnimationClass("hoverPulse")}`
           }`}
         disabled={isButtonDisabled}
         onPress={() => !isButtonDisabled && setIsOpen(true)}
@@ -110,7 +111,7 @@ export default function BookingModal({ tutor }) {
 
       <Modal.Backdrop>
         <Modal.Container>
-          <Modal.Dialog className="sm:max-w-md rounded-3xl bg-white shadow-2xl">
+          <Modal.Dialog className={`sm:max-w-md rounded-3xl bg-white shadow-2xl ${getAnimationClass("modal")}`}>
             <Modal.CloseTrigger />
 
             <Modal.Header className="px-6 pt-6 border-b pb-4">
@@ -161,7 +162,7 @@ export default function BookingModal({ tutor }) {
                         type="button"
                         variant="secondary"
                         onPress={() => setIsOpen(false)}
-                        className="flex-1"
+                        className={`flex-1 ${getAnimationClass("hoverPulse")}`}
                       >
                         Cancel
                       </Button>
@@ -169,7 +170,7 @@ export default function BookingModal({ tutor }) {
                       <Button
                         type="submit"
                         isLoading={loading}
-                        className="flex-1 bg-blue-600 text-white"
+                        className={`flex-1 bg-blue-600 text-white ${getAnimationClass("hoverPulse")}`}
                       >
                         Confirm Booking
                       </Button>
@@ -185,7 +186,7 @@ export default function BookingModal({ tutor }) {
                   </p>
 
                   <Button
-                    className="mt-4"
+                    className={`mt-4 ${getAnimationClass("hoverPulse")}`}
                     onPress={() => {
                       setIsOpen(false);
                       router.push("/login");
