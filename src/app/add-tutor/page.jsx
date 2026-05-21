@@ -7,6 +7,7 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { getAnimationClass } from "@/lib/utilis/animation";
 
+
 const AddTutorsPage = () => {
   const [availability, setAvailability] = useState("");
 

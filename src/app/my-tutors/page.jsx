@@ -3,6 +3,11 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { getAnimationClass } from "@/lib/utilis/animation";
 
+export const metadata = {
+  title: "MediQueue | My Tutors",
+  description:
+    "View and manage your tutors on the MediQueue platform.",
+};
 const fetchTutors = async (userId) => {
   const { token } = await auth.api.getToken({
     headers: await headers(),

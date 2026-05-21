@@ -4,6 +4,11 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getAnimationClass } from "@/lib/utilis/animation";
 
+export const metadata = {
+  title: "MediQueue | My Booked Sessions",
+  description:
+    "View and manage your booked tutoring sessions on the MediQueue platform.",
+};
 export default async function BookingsPage() {
   const session = await auth.api.getSession({
     headers: await headers(),

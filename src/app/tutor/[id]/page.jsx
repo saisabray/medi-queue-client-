@@ -1,4 +1,4 @@
-import { Button, Card } from "@heroui/react";
+import { Card } from "@heroui/react";
 import Image from "next/image";
 import {
   MapPin,
@@ -13,6 +13,11 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { getAnimationClass } from "@/lib/utilis/animation";
 
+export const metadata = {
+  title: "MediQueue | Tutor Details",
+  description:
+    "View detailed information about a specific tutor on the MediQueue platform.",
+};
 const TutorDetails = async ({ params }) => {
   const { token } = await auth.api.getToken({
     headers: await headers(),

@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "MediQueue | Tutor Booking System",
+  title: "MediQueue | Home",
   description:
     "MediQueue is a tutor booking web application that lets students register, log in, browse tutors, book sessions by subject and availability, and manage schedules using digital session tokens.",
 };
