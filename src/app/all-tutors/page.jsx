@@ -1,17 +1,19 @@
 import AvailableCard from "@/Component/Featured-Card/AvailableCard";
-import { authClient } from "@/lib/auth-client";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const fetchTutors = async () => {
-      const { data: tokenData } = await authClient.token();
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  const res = await fetch("http://localhost:8000/tutors/all", {
+    cache: "no-store",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return res.json();
 
-    const res = await fetch("http://localhost:8000/tutors/all", {
-      cache: "no-store",
-      headers: {
-        authorization: `Bearer ${tokenData?.token}`,
-      },
-    });
-    return res.json();
-  
 };
 
 const Tutors = async () => {

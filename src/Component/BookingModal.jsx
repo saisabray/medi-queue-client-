@@ -70,12 +70,14 @@ export default function BookingModal({ tutor }) {
       bookingDate: new Date().toISOString(),
       status: "booked",
     };
-
+    const { data: tokenData } = await authClient.token();
+    const token = tokenData?.token;
     const res = await fetch("http://localhost:8000/bookings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        
+         authorization : `Bearer ${token}`,
+      
       },
       body: JSON.stringify(bookingData),
     });

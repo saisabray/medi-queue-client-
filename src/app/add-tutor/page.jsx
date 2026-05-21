@@ -16,7 +16,6 @@ const AddTutorsPage = () => {
     const { data: sessionData } = await authClient.getSession();
     const user = sessionData?.user;
 
-    console.log("SESSION DATA:", sessionData);
 
     if (!user) {
       alert("Please login first");
@@ -47,8 +46,6 @@ const AddTutorsPage = () => {
       userEmail: user.email, 
     };
     const { data: tokenData } = await authClient.token();
-    console.log("TOKEN DATA:", tokenData);
-
 
     const res = await fetch("http://localhost:8000/tutors/all", {
       method: "POST",

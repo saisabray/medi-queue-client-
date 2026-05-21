@@ -8,7 +8,6 @@ import { authClient } from "@/lib/auth-client";
 
 const DeleteModal = ({ tutor }) => {
   const router = useRouter();
-  const { data: tokenData } = await authClient.token();
 
   const handleDelete = async () => {
     const { data: tokenData } = await authClient.token();

@@ -1,6 +1,5 @@
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
-import { authClient } from "@/lib/auth-client";
 import {
   MapPin,
   GraduationCap,
@@ -10,15 +9,19 @@ import {
   MonitorPlay,
 } from "lucide-react";
 import Booking from "@/Component/BookingModal";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const TutorDetails = async ({ params }) => {
-  const { data: tokenData } = await authClient.token();
-
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  
   const { id } = await params;
   const res = await fetch(`http://localhost:8000/tutors/all/${id}`, {
     cache: "no-store",
     headers: {
-      authorization: `Bearer ${tokenData?.token}`,
+      authorization: `Bearer ${token}`,
     },
   });
   const tutor = await res.json();
