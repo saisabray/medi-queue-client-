@@ -29,15 +29,15 @@ export default function EditModal({ tutor }) {
       subject: data.subject,
       availableDays: days,
       availableTime: time,
-      hourlyFee: data.hourlyFee,
-      totalSlot: data.slot,
+      hourlyFee: Number(data.hourlyFee),
+      totalSlot: Number(data.slot),
       institution: data.institute,
       experience: data.experience,
       location: data.location,
       teachingMode: data.teachingMode,
       sessionDate: data.date,
     };
-const { data: tokenData } = await authClient.token();
+    const { data: tokenData } = await authClient.token();
     try {
       const res = await fetch(`http://localhost:8000/tutors/all/${tutor._id}`, {
         method: "PATCH",
@@ -79,9 +79,9 @@ const { data: tokenData } = await authClient.token();
               <Modal.Heading>Edit Tutor: {tutor?.tutorName}</Modal.Heading>
             </Modal.Header>
             <Modal.Body className="p-4 overflow-y-auto max-h-[80vh]">
-              <From 
-                availability={availability} 
-                setAvailability={setAvailability} 
+              <From
+                availability={availability}
+                setAvailability={setAvailability}
                 handleSubmit={handleEdit}
                 className="w-full "
                 tutor={tutor}
