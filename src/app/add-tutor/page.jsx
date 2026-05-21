@@ -3,7 +3,7 @@
 import From from "@/Component/From";
 import { parseAvailability } from "@/lib/utilis/parseAvailability";
 import { useState } from "react";
-import { authClient } from "@/lib/auth-client"; 
+import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 
 const AddTutorsPage = () => {
@@ -43,12 +43,12 @@ const AddTutorsPage = () => {
       location: data.location,
       teachingMode: data.teachingMode,
       sessionDate: data.date,
-      userId: user.id, 
-      userEmail: user.email, 
+      userId: user.id,
+      userEmail: user.email,
     };
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch("http://localhost:8000/tutors/all", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/all`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

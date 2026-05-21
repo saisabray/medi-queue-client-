@@ -72,12 +72,12 @@ export default function BookingModal({ tutor }) {
     };
     const { data: tokenData } = await authClient.token();
     const token = tokenData?.token;
-    const res = await fetch("http://localhost:8000/bookings", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-         authorization : `Bearer ${token}`,
-      
+        authorization: `Bearer ${token}`,
+
       },
       body: JSON.stringify(bookingData),
     });
@@ -98,11 +98,10 @@ export default function BookingModal({ tutor }) {
   return (
     <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
       <Button
-        className={`font-semibold px-6 rounded-2xl transition-all duration-200 ${
-          isButtonDisabled
+        className={`font-semibold px-6 rounded-2xl transition-all duration-200 ${isButtonDisabled
             ? "bg-gray-200 text-gray-400 cursor-not-allowed shadow-none"
             : "bg-linear-to-r from-blue-600 to-cyan-500 text-white hover:opacity-90 active:scale-95"
-        }`}
+          }`}
         disabled={isButtonDisabled}
         onPress={() => !isButtonDisabled && setIsOpen(true)}
       >

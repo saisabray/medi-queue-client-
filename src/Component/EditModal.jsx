@@ -39,7 +39,7 @@ export default function EditModal({ tutor }) {
     };
     const { data: tokenData } = await authClient.token();
     try {
-      const res = await fetch(`http://localhost:8000/tutors/all/${tutor._id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/all/${tutor._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

@@ -22,7 +22,7 @@ export default function MyBookingTable({ bookings }) {
         return;
       }
 
-      const res = await fetch(`http://localhost:8000/bookings/cancel/${bookingId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/cancel/${bookingId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

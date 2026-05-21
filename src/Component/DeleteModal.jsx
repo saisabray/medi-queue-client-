@@ -12,7 +12,7 @@ const DeleteModal = ({ tutor }) => {
   const handleDelete = async () => {
     const { data: tokenData } = await authClient.token();
     try {
-      const res = await fetch(`http://localhost:8000/tutors/all/${tutor._id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/all/${tutor._id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${tokenData?.token}`,
@@ -59,7 +59,7 @@ const DeleteModal = ({ tutor }) => {
                 Cancel
               </Button>
               <Button slot="close" variant="danger" onPress={handleDelete}>
-                Delete 
+                Delete
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>

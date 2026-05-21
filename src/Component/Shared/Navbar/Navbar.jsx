@@ -15,7 +15,7 @@ const navLinks = [
 ];
 
 export default function Navbar({ user }) {
-  
+
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -70,11 +70,10 @@ export default function Navbar({ user }) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-base font-medium transition duration-300 no-underline  ${
-                  pathname === link.href
+                className={`text-base font-medium transition duration-300 no-underline  ${pathname === link.href
                     ? "text-blue-600 border-b-2 border-blue-600 rounded-none"
                     : "text-slate-700 hover:text-cyan-500"
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
@@ -126,9 +125,8 @@ export default function Navbar({ user }) {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`text-base font-medium no-underline ${
-                    pathname === link.href ? "text-blue-600" : "text-slate-700"
-                  }`}
+                  className={`text-base font-medium no-underline ${pathname === link.href ? "text-blue-600" : "text-slate-700"
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -136,7 +134,7 @@ export default function Navbar({ user }) {
             ))}
 
             <div className="mt-4 flex justify-center items-center gap-3 w-4/5 ">
-              <ThemeToggle/>
+              <ThemeToggle />
               {!user && (
                 <div className="hidden items-center gap-4 md:flex border-b-0">
                   <Link href="/login" className="no-underline">

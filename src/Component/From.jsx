@@ -140,7 +140,7 @@ const From = ({ availability, setAvailability, handleSubmit, className, tutor })
           <FieldError />
         </TextField>
 
-        <Select name="teachingMode" className="w-full" placeholder="Select one"  defaultSelectedKey={tutor?.teachingMode}>
+        <Select name="teachingMode" className="w-full" placeholder="Select one" defaultSelectedKey={tutor?.teachingMode}>
           <Label>Teaching Mode</Label>
 
           <Select.Trigger>

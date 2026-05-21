@@ -10,7 +10,7 @@ export default function Home() {
       <Hero />
       <AvailableTutors />
       <WhyChooseUs />
-      <Stats/>
+      <Stats />
 
     </>);
 }

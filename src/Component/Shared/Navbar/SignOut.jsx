@@ -4,7 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-const SignOutButton =() => {
+const SignOutButton = () => {
   const router = useRouter();
   const handleSignOut = async () => {
     await authClient.signOut({

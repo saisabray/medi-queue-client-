@@ -4,11 +4,11 @@ import { headers } from "next/headers";
 
 
 const fetchTutors = async (userId) => {
-          const { token } = await auth.api.getToken({
-            headers: await headers(),
-          });
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
 
-  const res = await fetch(`http://localhost:8000/tutors/${userId}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${userId}`, {
     cache: "no-store",
     headers: {
       authorization: `Bearer ${token}`,

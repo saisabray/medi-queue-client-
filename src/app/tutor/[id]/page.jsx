@@ -16,9 +16,9 @@ const TutorDetails = async ({ params }) => {
   const { token } = await auth.api.getToken({
     headers: await headers(),
   });
-  
+
   const { id } = await params;
-  const res = await fetch(`http://localhost:8000/tutors/all/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/all/${id}`, {
     cache: "no-store",
     headers: {
       authorization: `Bearer ${token}`,
