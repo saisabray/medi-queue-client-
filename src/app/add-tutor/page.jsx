@@ -4,6 +4,7 @@ import From from "@/Component/From";
 import { parseAvailability } from "@/lib/utilis/parseAvailability";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client"; 
+import { toast } from "react-toastify";
 
 const AddTutorsPage = () => {
   const [availability, setAvailability] = useState("");
@@ -59,9 +60,9 @@ const AddTutorsPage = () => {
     const result = await res.json();
 
     if (result.acknowledged) {
-      alert("Tutor added successfully!");
+      toast.success("Tutor added successfully!");
     } else {
-      alert("Failed to add tutor");
+      toast.error("Failed to add tutor");
     }
 
     e.target.reset();

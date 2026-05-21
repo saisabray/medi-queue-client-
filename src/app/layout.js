@@ -5,6 +5,7 @@ import Footer from "@/Component/Shared/Footer/Footer";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { Providers } from "./providers";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default async function RootLayout({ children }) {
           {children}
 
           <Footer />
+          <ToastContainer />
         </Providers>
       </body>
     </html>

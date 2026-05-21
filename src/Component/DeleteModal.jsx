@@ -20,7 +20,7 @@ const DeleteModal = ({ tutor }) => {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to delete tutor");
+        toast.error("Failed to delete tutor");
       }
 
       const result = await res.json();
@@ -32,7 +32,6 @@ const DeleteModal = ({ tutor }) => {
         toast.error("Failed to delete tutor.");
       }
     } catch (error) {
-      console.error("Error deleting tutor:", error);
       toast.error("An error occurred while deleting the tutor.");
     }
   };

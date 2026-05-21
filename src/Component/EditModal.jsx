@@ -51,15 +51,14 @@ export default function EditModal({ tutor }) {
       const result = await res.json();
 
       if (result.modifiedCount > 0 || result.acknowledged) {
-        alert("Tutor updated successfully!");
+        toast.success("Tutor updated successfully!");
         setIsOpen(false);
         router.refresh();
       } else {
-        alert("Failed to update tutor or no changes made.");
+        toast.error("Failed to update tutor or no changes made.");
       }
     } catch (error) {
-      console.error("Error updating tutor:", error);
-      alert("An error occurred while updating the tutor.");
+      toast.error("An error occurred while updating the tutor.");
     }
   };
 
