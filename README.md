@@ -11,7 +11,7 @@ A modern full-stack tutor booking platform where students can discover tutors, b
 > Add a screenshot of your homepage here.
 
 ```md
-![MediQueue Screenshot](/public/assets/images/screenshot.png)
+![MediQueue Screenshot](https://i.ibb.co.com/YTFLvdV2/screenshot.png)
 ```
 
 ---
