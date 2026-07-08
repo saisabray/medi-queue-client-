@@ -1,39 +1,149 @@
-Project_Name:MediQueue – Tutor Booking System
-Live_Link:https://medi-queue-client-cyan.vercel.app
+# MediQueue – Tutor Booking System
 
-# Key features:
+## 📖 Project Overview
 
-# Tutor Listing Page
+MediQueue is a full-stack tutor booking platform that allows students to find tutors, search and filter available sessions, and book tutoring sessions online. Tutors can create, update, and manage their own tutoring sessions through an intuitive dashboard.
 
-> Displays all the available tutors
-> Shows tutor info:Name ,Subjects,SessionDate,Experience
+## 🌐 Live Project
 
-# Search & Filter System
+🔗 https://medi-queue-client-cyan.vercel.app
 
-> Search tutors by name
-> Filter by: Session date range
+---
 
-# Booking System
+## 📸 Project Screenshot
 
-> Students can book a tutor session
+> Add a screenshot of your homepage here.
 
-# Booked Session Section
+```md
+![MediQueue Screenshot](./public/images/project-screenshot.png)
+```
 
-> Collects session of booked Tutors
-> Show Booked Status and Info About Tutor and Student
-> Cancel Functionality
+Or upload the image to GitHub and use:
 
-# Tutor Details Page
+```md
+![MediQueue Screenshot](https://your-image-link.com/image.png)
+```
 
-> Full profile of a tutor
-> Includes: Description ,Subjects,Slots,Fee,Schedule/availability
-> Booking Btn
+---
 
-# Add Tutor Page
+## 🚀 Technologies Used
 
-> User can add a tutor using tutors info
+### Frontend
+- Next.js
+- React
+- JavaScript (ES6+)
+- Tailwind CSS
+- HeroUI
+- React Icons
+- Axios
 
-# My Tutor Page
+### Backend
+- Node.js
+- Express.js
+- MongoDB
 
-> Added Tutor's info will show here
-> Edit,Delete btn
+### Authentication
+- Better Auth
+
+---
+
+## ✨ Core Features
+
+- Browse all available tutors
+- Search tutors by name
+- Filter tutors by session date
+- View detailed tutor profiles
+- Book tutor sessions
+- View all booked sessions
+- Cancel booked sessions
+- Add new tutor sessions
+- Update and delete your own tutor listings
+- Responsive design for mobile, tablet, and desktop
+
+---
+
+## 📦 Dependencies
+
+Some of the major dependencies used in this project include:
+
+### Client
+
+- next
+- react
+- react-dom
+- axios
+- tailwindcss
+- @heroui/react
+- react-icons
+- framer-motion
+- better-auth
+
+---
+
+## ⚙️ Run the Project Locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/saisabray/medi-queue-client-.git
+```
+
+### 2. Navigate to the project
+
+```bash
+cd medi-queue-client-
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Create a `.env.local` file
+
+Add the required environment variables.
+
+Example:
+
+```env
+NEXT_PUBLIC_API_URL=your_server_url
+NEXT_PUBLIC_BETTER_AUTH_URL=your_auth_url
+```
+
+### 5. Start the development server
+
+```bash
+npm run dev
+```
+
+Open:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🔗 Resources
+
+### Live Site
+
+https://medi-queue-client-cyan.vercel.app
+
+### Client Repository
+
+https://github.com/saisabray/medi-queue-client-
+
+### Server Repository
+
+(Add your server GitHub link here)
+
+---
+
+## 👨‍💻 Author
+
+**Saisab Roy**
+
+GitHub:
+https://github.com/saisabray
